@@ -4,7 +4,7 @@ import styles from "./todo.module.scss";
 export default function page() {
   return (
     <main>
-      <h1>Mini Apps</h1>
+      <h1>Todo Apps</h1>
     </main>
   );
 }

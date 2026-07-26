@@ -8,6 +8,11 @@ export default function Header() {
       <Link href="/" className={styles.logo}>
         Next Instagram Apps
       </Link>
+
+      <nav className={styles.nav}>
+        <Link href="/">Home</Link>
+        <Link href="/todo">Todo</Link>
+      </nav>
     </header>
   );
 }
