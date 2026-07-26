@@ -2,5 +2,9 @@ import React from "react";
 import styles from "./todo.module.scss";
 
 export default function page() {
-  return <div></div>;
+  return (
+    <main>
+      <h1>Mini Apps</h1>
+    </main>
+  );
 }
