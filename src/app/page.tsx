@@ -10,7 +10,7 @@ const apps = [
   },
   {
     title: "Memo App",
-    description: "タスクの追加・完了・削除を管理するアプリ",
+    description: "簡単なメモを保存・管理するアプリ",
     href: "/memo",
   },
 ];
