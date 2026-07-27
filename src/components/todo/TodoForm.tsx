@@ -28,7 +28,12 @@ export default function TodoForm({ onAdd }: TodoFormProps) {
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
+        placeholder="What needs to be done?"
+        aria-label="New todo"
       />
+      <button className={styles.button} type="submit">
+        + Add
+      </button>
     </form>
   );
 }
