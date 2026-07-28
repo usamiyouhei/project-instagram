@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "./todo.module.scss";
+import styles from "./home.module.scss";
 import { Todo } from "@/types/todo";
 import TodoForm from "@/components/todo/TodoForm";
 import TodoList from "@/components/todo/TodoList";
