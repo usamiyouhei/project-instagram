@@ -23,6 +23,12 @@ export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
         >
           {todo.text}
         </span>
+        <time
+          className={`${styles.time} ${todo.completed ? styles.completed : ""}`}
+          dateTime={todo.createdAt}
+        >
+          {new Date(todo.createdAt).toLocaleString("ja-JP")}
+        </time>
       </label>
 
       <button
