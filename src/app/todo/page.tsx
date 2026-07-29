@@ -53,7 +53,7 @@ export default function Home() {
 
         <div className={styles.status}>
           <span>{inCompletedCount}tasks remaning</span>
-          <span>total</span>
+          <span>{todos.length}total</span>
         </div>
 
         <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />

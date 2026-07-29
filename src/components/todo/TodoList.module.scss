@@ -1,0 +1,15 @@
+.list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty {
+  padding: 36px 20px;
+  border: 1px dashed #ccd2dc;
+  color: #8a93a1;
+  text-align: center;
+  background: #f8f9fb;
+}
