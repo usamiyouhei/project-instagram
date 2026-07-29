@@ -14,6 +14,7 @@ export default function Home() {
       id: crypto.randomUUID(),
       text,
       completed: false,
+      createdAt: new Date().toISOString(),
     };
 
     setTodos((prevTodos) => [...prevTodos, newTodo]);
@@ -36,7 +37,7 @@ export default function Home() {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
-  const inCompletedCount = todos.filter((todo) => !todo.completed).length;
+  const inCompleteCount = todos.filter((todo) => !todo.completed).length;
 
   return (
     <main className={styles.page}>
@@ -52,8 +53,8 @@ export default function Home() {
         <TodoForm onAdd={addTodo} />
 
         <div className={styles.status}>
-          <span>{inCompletedCount}tasks remaning</span>
-          <span>{todos.length}total</span>
+          <span>{inCompleteCount} tasks remaning</span>
+          <span>{todos.length} total</span>
         </div>
 
         <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
