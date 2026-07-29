@@ -1,0 +1,66 @@
+$navy: #182235;
+$gold: #b79757;
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 18px;
+  border: 1px solid #e1e5eb;
+  border-radius: 14px;
+  background: #fff;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: rgba(183, 151, 87, 0.45);
+    box-shadow: 0 10px 26px rgba(24, 34, 53, 0.07);
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  accent-color: $gold;
+  cursor: pointer;
+}
+
+.text {
+  overflow-wrap: anywhere;
+  color: $navy;
+  line-height: 1.5;
+}
+
+.completed {
+  color: #9ba3af;
+  text-decoration: line-through;
+}
+
+.deleteButton {
+  flex-shrink: 0;
+  padding: 8px 10px;
+  border: 1px solid $navy;
+  border-radius: 10px;
+  color: #9a5360;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
