@@ -32,7 +32,7 @@ export default function TodoItem({
             {todo.text}
           </span>
           <time
-            className={`${styles.time} ${todo.completed ? styles.completed : ""}`}
+            className={`${styles.createdAt} ${todo.completed ? styles.completed : ""}`}
             dateTime={todo.createdAt}
           >
             {new Date(todo.createdAt).toLocaleString("ja-JP")}

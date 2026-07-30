@@ -1,12 +1,12 @@
-$navy: #182235;
+$navy: #071a3d;
 $gold: #b79757;
 
 .item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 16px 18px;
+  gap: 16px;
+  padding: 18px 20px;
   border: 1px solid #e1e5eb;
   border-radius: 14px;
   background: #fff;
@@ -25,9 +25,17 @@ $gold: #b79757;
 .content {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
+  flex: 1;
   min-width: 0;
   cursor: pointer;
+}
+
+.todoInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
 }
 
 .checkbox {
@@ -42,7 +50,13 @@ $gold: #b79757;
 .text {
   overflow-wrap: anywhere;
   color: $navy;
-  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.createdAt {
+  color: #7b8494;
+  font-size: 13px;
 }
 
 .completed {
@@ -50,18 +64,27 @@ $gold: #b79757;
   text-decoration: line-through;
 }
 
-.deleteButton {
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconButton {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
-  padding: 8px 10px;
-  border: 1px solid $navy;
-  border-radius: 10px;
-  color: #9a5360;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  color: #5c6470;
   background: transparent;
-  font: inherit;
-  font-size: 13px;
   cursor: pointer;
 
   &:hover {
-    text-decoration: underline;
+    color: #c59124;
+    background: #f5f2ea;
   }
 }
