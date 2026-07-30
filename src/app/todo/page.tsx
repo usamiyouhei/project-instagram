@@ -20,7 +20,7 @@ export default function Home() {
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
 
-  const toggleTodo = (id: string) => {
+  const toggleTask = (id: string) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id
@@ -33,8 +33,26 @@ export default function Home() {
     );
   };
 
-  const deleteTodo = (id: string) => {
+  const deleteTask = (id: string) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
+
+  const editTask = (id: string, newText: string) => {
+    const trimmedText = newText.trim();
+    if (!trimmedText) {
+      return;
+    }
+
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id
+          ? {
+              ...todo,
+              text: trimmedText,
+            }
+          : todo,
+      ),
+    );
   };
 
   const inCompleteCount = todos.filter((todo) => !todo.completed).length;
@@ -44,7 +62,7 @@ export default function Home() {
       <section className={styles.todoCard}>
         <div className={styles.heading}>
           <p className={styles.label}>Next.js Mini Project</p>
-          <h1 className={styles.title}>Todo Apps</h1>
+          <h1 className={styles.title}>Todo App</h1>
           <p className={styles.description}>
             Organize your tasks and keep moving forward.
           </p>
@@ -53,11 +71,11 @@ export default function Home() {
         <TodoForm onAdd={addTodo} />
 
         <div className={styles.status}>
-          <span>{inCompleteCount} tasks remaning</span>
+          <span>{inCompleteCount} tasks remaining</span>
           <span>{todos.length} total</span>
         </div>
 
-        <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
+        <TodoList todos={todos} onToggle={toggleTask} onDelete={deleteTask} />
       </section>
     </main>
   );
