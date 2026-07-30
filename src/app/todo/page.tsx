@@ -75,7 +75,12 @@ export default function Home() {
           <span>{todos.length} total</span>
         </div>
 
-        <TodoList todos={todos} onToggle={toggleTask} onDelete={deleteTask} />
+        <TodoList
+          todos={todos}
+          onToggle={toggleTask}
+          onDelete={deleteTask}
+          onEdit={editTask}
+        />
       </section>
     </main>
   );
