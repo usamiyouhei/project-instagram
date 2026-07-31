@@ -1,13 +1,35 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./home.module.scss";
 import { Todo } from "@/types/todo";
 import TodoForm from "@/components/todo/TodoForm";
 import TodoList from "@/components/todo/TodoList";
 
+const TODOS_STORAGE_KEY = "todos";
+
 export default function Home() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    if (typeof window === "undefined") {
+      return [];
+    }
+
+    const storedTodos = localStorage.getItem(TODOS_STORAGE_KEY);
+
+    if (!storedTodos) {
+      return;
+    }
+
+    try {
+      return JSON.parse(storedTodos);
+    } catch {
+      console.error("Failed to load todos.");
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (text: string) => {
     const newTodo: Todo = {
