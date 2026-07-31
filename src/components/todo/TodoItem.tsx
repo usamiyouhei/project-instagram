@@ -21,6 +21,16 @@ export default function TodoItem({
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
 
+  const handleSave = () => {
+    const trimmedText = editText.trim();
+    if (!trimmedText) {
+      return;
+    }
+
+    onEdit(todo.id, trimmedText);
+    setIsEditing(false);
+  };
+
   return (
     <li className={styles.item}>
       <label className={styles.content}>
@@ -31,11 +41,19 @@ export default function TodoItem({
           onChange={() => onToggle(todo.id)}
         />
         <div className={styles.todoInfo}>
-          <span
-            className={`${styles.text} ${todo.completed ? styles.completed : ""}`}
-          >
-            {todo.text}
-          </span>
+          {isEditing ? (
+            <input
+              className={styles.editInput}
+              value={editText}
+              onChange={(e) => setEditText(e.target.value)}
+            />
+          ) : (
+            <span
+              className={`${styles.text} ${todo.completed ? styles.completed : ""}`}
+            >
+              {todo.text}
+            </span>
+          )}
           <time
             className={`${styles.createdAt} ${todo.completed ? styles.completed : ""}`}
             dateTime={todo.createdAt}
@@ -46,14 +64,24 @@ export default function TodoItem({
       </label>
 
       <div className={styles.actions}>
-        <button
-          className={styles.iconButton}
-          type="button"
-          onClick={() => setIsEditing(true)}
-          aria-label={`edit ${todo.text}`}
-        >
-          <Pencil size={20} strokeWidth={1.8} />
-        </button>
+        {isEditing ? (
+          <button
+            className={styles.saveButton}
+            type="button"
+            onClick={handleSave}
+          >
+            Save
+          </button>
+        ) : (
+          <button
+            className={styles.iconButton}
+            type="button"
+            onClick={() => setIsEditing(true)}
+            aria-label={`edit ${todo.text}`}
+          >
+            <Pencil size={20} strokeWidth={1.8} />
+          </button>
+        )}
 
         <button
           className={styles.iconButton}
