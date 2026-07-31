@@ -33,7 +33,7 @@ export default function TodoItem({
 
   return (
     <li className={styles.item}>
-      <label className={styles.content}>
+      <div className={styles.content}>
         <input
           className={styles.checkbox}
           type="checkbox"
@@ -46,6 +46,11 @@ export default function TodoItem({
               className={styles.editInput}
               value={editText}
               onChange={(e) => setEditText(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSave();
+                }
+              }}
             />
           ) : (
             <span
@@ -61,7 +66,7 @@ export default function TodoItem({
             {new Date(todo.createdAt).toLocaleString("ja-JP")}
           </time>
         </div>
-      </label>
+      </div>
 
       <div className={styles.actions}>
         {isEditing ? (
@@ -76,21 +81,36 @@ export default function TodoItem({
           <button
             className={styles.iconButton}
             type="button"
-            onClick={() => setIsEditing(true)}
+            onClick={() => {
+              setEditText(todo.text);
+              setIsEditing(true);
+            }}
             aria-label={`edit ${todo.text}`}
           >
             <Pencil size={20} strokeWidth={1.8} />
           </button>
         )}
-
-        <button
-          className={styles.iconButton}
-          type="button"
-          onClick={() => onDelete(todo.id)}
-          aria-label={`delete ${todo.text}`}
-        >
-          <Trash2 size={20} strokeWidth={1.8} />
-        </button>
+        {isEditing ? (
+          <button
+            className={styles.cancelButton}
+            type="button"
+            onClick={() => {
+              setEditText(todo.text);
+              setIsEditing(false);
+            }}
+          >
+            cancel
+          </button>
+        ) : (
+          <button
+            className={styles.iconButton}
+            type="button"
+            onClick={() => onDelete(todo.id)}
+            aria-label={`delete ${todo.text}`}
+          >
+            <Trash2 size={20} strokeWidth={1.8} />
+          </button>
+        )}
       </div>
     </li>
   );
