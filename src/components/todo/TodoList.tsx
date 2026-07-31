@@ -7,7 +7,7 @@ type TodoListProps = {
   todos: Todo[];
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
-  onEdit: (id: string) => void;
+  onEdit: (id: string, newText: string) => void;
 };
 
 export default function TodoList({

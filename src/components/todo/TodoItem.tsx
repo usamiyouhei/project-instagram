@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import styles from "./TodoItem.module.scss";
 import { Todo } from "@/types/todo";
 import { Pencil, Trash2 } from "lucide-react";
@@ -7,7 +9,7 @@ type TodoItemProps = {
   todo: Todo;
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
-  onEdit: (id: string) => void;
+  onEdit: (id: string, newText: string) => void;
 };
 
 export default function TodoItem({
@@ -16,6 +18,9 @@ export default function TodoItem({
   onDelete,
   onEdit,
 }: TodoItemProps) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editText, setEditText] = useState(todo.text);
+
   return (
     <li className={styles.item}>
       <label className={styles.content}>
@@ -44,7 +49,7 @@ export default function TodoItem({
         <button
           className={styles.iconButton}
           type="button"
-          onChange={() => onEdit(todo.id)}
+          onClick={() => setIsEditing(true)}
           aria-label={`edit ${todo.text}`}
         >
           <Pencil size={20} strokeWidth={1.8} />
