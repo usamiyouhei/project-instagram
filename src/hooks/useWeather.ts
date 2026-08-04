@@ -20,8 +20,8 @@ type UseWeatherReturn = {
   error: string | null;
 };
 
-export const useWeather = (): UseWeatherReturn => {
-  const [weather, setWeather] = useState<WeatherResponse | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-};
+// export const useWeather = (): UseWeatherReturn => {
+//   const [weather, setWeather] = useState<WeatherResponse | null>(null);
+//   const [isLoading, setIsLoading] = useState(true);
+//   const [error, setError] = useState<string | null>(null);
+// };

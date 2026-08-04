@@ -14,6 +14,7 @@ export default function Header() {
         <Link href="/todo">Todo</Link>
         <Link href="/memo">Memo</Link>
         <Link href="/weather">Weather</Link>
+        <Link href="/counter">Counter</Link>
       </nav>
     </header>
   );
