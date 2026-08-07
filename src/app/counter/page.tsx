@@ -35,6 +35,27 @@ export default function Home() {
       return nextCount;
     });
   };
+
+  const resetCount = () => {
+    setCount(INITIAL_COUNT);
+    setHistory([]);
+  };
+
+  const changeGoal = () => {
+    const input = window.prompt("Enter your new goal", String(goal));
+
+    if (!input) {
+      return;
+    }
+
+    const nextGoal = Number(input);
+    if (!Number.isInteger(nextGoal) || nextGoal <= 0) {
+      window.alert("Please enter a positive whole number.");
+      return;
+    }
+
+    setGoal(nextGoal);
+  };
   return (
     <main className={styles.page}>
       <header className={styles.header}>
