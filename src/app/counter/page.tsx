@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "./home.module.scss";
 import { CountHistory } from "@/types/counter";
-import { Minus, Plus } from "lucide-react";
+import { Minus, Pencil, Plus } from "lucide-react";
 
 const INITIAL_COUNT = 0;
 const INITIAL_GOAL = 30;
@@ -56,6 +56,27 @@ export default function Home() {
 
     setGoal(nextGoal);
   };
+
+  const getProgressMessage = () => {
+    if (count >= goal) {
+      return "Goal achived!";
+    }
+
+    if (progress >= 75) {
+      return "Almost there!";
+    }
+
+    if (progress >= 50) {
+      return "You're doing great!";
+    }
+
+    if (progress > 0) {
+      return "Keep going!";
+    }
+
+    return "Start counting!";
+  };
+
   return (
     <main className={styles.page}>
       <header className={styles.header}>
@@ -104,6 +125,24 @@ export default function Home() {
               <Plus />
             </button>
           </div>
+
+          <button
+            className={styles.goalButton}
+            type="button"
+            onClick={changeGoal}
+          >
+            GOAL:<strong>{goal}</strong>
+            <Pencil size={16} />
+          </button>
+
+          <section className={styles.progressCard}>
+            <div className={styles.progressHeader}>
+              <strong>{progress}%</strong>
+              <span>
+                {count}/{goal}
+              </span>
+            </div>
+          </section>
         </section>
       </div>
     </main>
