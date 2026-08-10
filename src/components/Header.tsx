@@ -15,6 +15,8 @@ export default function Header() {
         <Link href="/memo">Memo</Link>
         <Link href="/weather">Weather</Link>
         <Link href="/counter">Counter</Link>
+        <Link href="/button">Button</Link>
+        <Link href="/navigation">Nav</Link>
       </nav>
     </header>
   );
