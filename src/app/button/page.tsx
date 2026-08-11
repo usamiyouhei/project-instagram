@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./page.module.scss";
+import MagneticButton from "@/components/ui/buttons/MagneticButton/MagneticButton";
 
 export default function page() {
   return (
@@ -10,6 +11,7 @@ export default function page() {
         <h1>Magnetic Button</h1>
 
         <p className={styles.discription}>Move your cursor over the button.</p>
+        <MagneticButton>Expplore More</MagneticButton>
       </div>
     </main>
   );
