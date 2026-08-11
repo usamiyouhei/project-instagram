@@ -1,5 +1,6 @@
 "use client";
 import React, { PointerEvent, useRef } from "react";
+import styles from "./MagneticButton.module.scss";
 
 type MagneticButtonProps = {
   children: React.ReactNode;
@@ -14,7 +15,7 @@ export default function MagneticButton({
 }: MagneticButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const handlePointMove = (event: PointerEvent<HTMLButtonElement>) => {
+  const handlePointerMove = (event: PointerEvent<HTMLButtonElement>) => {
     const button = buttonRef.current;
 
     if (!button) return;
@@ -35,12 +36,26 @@ export default function MagneticButton({
     `;
   };
 
-  const handlePointLeave = () => {
+  const handlePointerLeave = () => {
     const button = buttonRef.current;
 
     if (!button) return;
 
     button.style.transform = "translate(0,0)";
   };
-  return <div></div>;
+  return (
+    <button
+      ref={buttonRef}
+      type="button"
+      className={styles.button}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      onClick={onClick}
+    >
+      <span>{children}</span>
+      <span className={styles.arrow} aria-hidden="true">
+        →
+      </span>
+    </button>
+  );
 }
