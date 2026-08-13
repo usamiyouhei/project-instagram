@@ -9,22 +9,20 @@ import TodoList from "@/components/todo/TodoList";
 const TODOS_STORAGE_KEY = "todos";
 
 export default function Home() {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    if (typeof window === "undefined") return [];
     const storedTodos = localStorage.getItem(TODOS_STORAGE_KEY);
 
-    if (storedTodos) {
-      try {
-        const parsedTodos = JSON.parse(storedTodos) as Todo[];
-        setTodos(parsedTodos);
-      } catch {
-        console.error("Failed to load todos.");
-      }
-      setIsLoaded(true);
+    if (!storedTodos) return [];
+    try {
+      return JSON.parse(storedTodos) as Todo[];
+    } catch {
+      console.error("Failed to load todos.");
+      return [];
     }
-  }, []);
+  });
+
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (!isLoaded) {
