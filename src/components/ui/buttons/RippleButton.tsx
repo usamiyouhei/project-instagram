@@ -8,7 +8,11 @@ type Ripple = {
   id: number;
 };
 
-export default function RippleButton() {
+type RippleButtonProps = {
+  children: React.ReactNode;
+};
+
+export default function RippleButton({ children }: RippleButtonProps) {
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -29,7 +33,18 @@ export default function RippleButton() {
 
     setTimeout(() => {
       setRipples((prev) => prev.filter((ripple) => ripple.id !== newRipple.id));
-    });
+    }, 600);
   };
-  return <button>Ripple Button</button>;
+  return (
+    <button className={styles.button} onClick={handleClick}>
+      {children}
+      {ripples.map((ripple) => (
+        <span
+          key={ripple.id}
+          className={styles.ripple}
+          style={{ left: ripple.x, top: ripple.y }}
+        />
+      ))}
+    </button>
+  );
 }
