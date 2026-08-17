@@ -3,6 +3,7 @@
   overflow: hidden;
 
   padding: 14px 28px;
+  margin: 10px;
   border: none;
   border-radius: 12px;
   background: #111827;
@@ -10,19 +11,33 @@
 
   font-size: 16px;
   cursor: pointer;
+
+  .ripple {
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 600ms ease-out;
+    pointer-events: none;
+  }
 }
 
-.ripple {
-  position: absolute;
+.default {
+  background: #111827;
+  color: white;
+}
 
-  width: 20px;
-  height: 20px;
+.water {
+  background: #dff6ff;
+  color: #075985;
 
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  transform: translate(-50%, -50%) scale(0);
-  animation: ripple 600ms ease-out;
-  pointer-events: none;
+  .ripple {
+    background: rgba(56, 189, 248, 0.45);
+  }
 }
 
 @keyframes ripple {

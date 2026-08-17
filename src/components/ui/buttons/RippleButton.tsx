@@ -10,9 +10,13 @@ type Ripple = {
 
 type RippleButtonProps = {
   children: React.ReactNode;
+  variant?: "default" | "water";
 };
 
-export default function RippleButton({ children }: RippleButtonProps) {
+export default function RippleButton({
+  children,
+  variant = "default",
+}: RippleButtonProps) {
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -36,7 +40,10 @@ export default function RippleButton({ children }: RippleButtonProps) {
     }, 600);
   };
   return (
-    <button className={styles.button} onClick={handleClick}>
+    <button
+      className={`${styles.button} ${styles[variant]}`}
+      onClick={handleClick}
+    >
       {children}
       {ripples.map((ripple) => (
         <span
