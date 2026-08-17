@@ -24,6 +24,7 @@ export default function page() {
 
         <p className={styles.discription}>Move your cursor over the button.</p>
         <RippleButton>Ripple Button</RippleButton>
+        <RippleButton variant="water">Water Ripple</RippleButton>
       </div>
     </main>
   );
