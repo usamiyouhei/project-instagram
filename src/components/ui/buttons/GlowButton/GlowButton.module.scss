@@ -1,0 +1,85 @@
+.button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 30px;
+  margin-top: 20px;
+
+  overflow: hidden;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: #0f172a;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  transition:
+    transform 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+
+    border-color: #d4af37;
+
+    box-shadow:
+      0 0 12px rgba(212, 175, 55, 0.35),
+      0 0 30px rgba(212, 175, 55, 0.2),
+      0 16px 30px rgba(15, 23, 42, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.97);
+  }
+}
+
+.glow {
+  position: absolute;
+
+  width: 80px;
+  height: 80px;
+
+  top: 50%;
+  left: -100px;
+
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+
+  background: rgba(212, 175, 55, 0.6);
+
+  filter: blur(30px);
+
+  transition: left 500ms ease;
+
+  pointer-events: none;
+}
+button:hover .glow {
+  left: calc(100% + 20px);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.arrow {
+  color: #d4af37;
+
+  transition: transform 250ms ease;
+}
+
+.button:hover .arrow {
+  transform: translateX(5px);
+}
