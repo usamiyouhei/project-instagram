@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./page.module.scss";
+import FloatingNavbar from "@/components/ui/navigation/FloatingNavbar";
 
 export default function page() {
   return (
@@ -12,6 +13,7 @@ export default function page() {
         <p className={styles.discription}>
           Move your cursor over the navigation button.
         </p>
+        <FloatingNavbar />
       </div>
     </main>
   );

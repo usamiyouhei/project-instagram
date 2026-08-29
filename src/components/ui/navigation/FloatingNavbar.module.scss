@@ -1,0 +1,23 @@
+.navbar {
+  position: fixed;
+  top: 250px;
+  left: 50%;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 6px;
+
+  background: rgba(18, 24, 38, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+
+  backdrop-filter: blur(16px);
+  transform: translateX(-50%);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
