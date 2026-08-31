@@ -10,13 +10,31 @@ export default function FloatingNavbar() {
   const [activeItem, setActiveItem] = useState("Home");
   return (
     <LayoutGroup>
-      <nav className={styles.navbar}>
+      <motion.nav
+        className={styles.navbar}
+        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
+        }}
+        transition={{
+          duration: 0.5,
+          ease: "easeOut",
+        }}
+      >
         {navItems.map((item) => (
-          <button
+          <motion.button
             key={item}
             type="button"
             className={`${styles.navItem} ${activeItem === item ? styles.active : ""}`}
             onClick={() => setActiveItem(item)}
+            whileHover={{
+              y: -2,
+            }}
+            whileTap={{
+              scale: 0.96,
+            }}
           >
             {activeItem === item && (
               <motion.span
@@ -36,9 +54,9 @@ export default function FloatingNavbar() {
             >
               {item}
             </span>
-          </button>
+          </motion.button>
         ))}
-      </nav>
+      </motion.nav>
     </LayoutGroup>
   );
 }
