@@ -35,6 +35,9 @@ export default function FloatingNavbar() {
             whileTap={{
               scale: 0.96,
             }}
+            transition={{
+              duration: 0.18,
+            }}
           >
             {activeItem === item && (
               <motion.span
